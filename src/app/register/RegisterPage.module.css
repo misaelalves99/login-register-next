@@ -1,0 +1,11 @@
+/* LoginPage.module.css */
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f4f7fa;
+  padding: 2rem;
+}
