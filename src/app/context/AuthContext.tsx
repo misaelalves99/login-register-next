@@ -4,15 +4,11 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-
-// 04-Objetos - Interface tipada para usuário
 interface User {
   name: string;
   email: string;
   token?: string;
 }
-
-// Tipagem do contexto de autenticação
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
@@ -20,15 +16,12 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// Criação do contexto
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider com ReactNode como children
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
-  // 01-Estruturas e Tratamento - Carregamento inicial do usuário
   useEffect(() => {
     const storedUser = localStorage.getItem('authUser');
     if (storedUser) {
@@ -36,7 +29,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // 02-Funções e Métodos - Login
   const login = async (email: string, password: string) => {
     try {
       const res = await fetch('/api/auth/route', {
@@ -51,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const user: User = data.user;
       setUser(user);
       localStorage.setItem('authUser', JSON.stringify(user));
-      router.push('/dashboard'); // Redireciona após login
+      router.push('/dashboard');
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert(error.message);
@@ -59,7 +51,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // 02-Funções e Métodos - Registro
   const register = async (name: string, email: string, password: string) => {
     try {
       if (password.length < 6) {
@@ -79,7 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const user: User = data.user;
       setUser(user);
       localStorage.setItem('authUser', JSON.stringify(user));
-      router.push('/login'); // Redireciona após registro
+      router.push('/login');
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert(error.message);
@@ -87,14 +78,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // 02-Funções e Métodos - Logout
   const logout = () => {
     setUser(null);
     localStorage.removeItem('authUser');
-    router.push('/login'); // Redireciona após logout
+    router.push('/login');
   };
 
-  // Provider com todos os valores
   return (
     <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
@@ -102,7 +91,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Hook customizado com verificação de uso correto
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
   if (!context) {
@@ -110,11 +98,3 @@ export function useAuth(): AuthContextType {
   }
   return context;
 }
-
-// 01-Estruturas e Tratamento -
-// 02-Funções e Métodos -
-// 03-Arrays -
-// 04-Objetos -
-// 06-Hooks -
-// 07-Props e Router -
-// 08-Api -

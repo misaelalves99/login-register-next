@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaGoogle, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { useAuth } from "../context/AuthContext"; // Importação do hook de autenticação
+import { useAuth } from "../context/AuthContext";
 import styles from "./LoginForm.module.css";
 import FormInput from "./FormInput";
 
@@ -15,7 +15,7 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const router = useRouter();
-  const { login } = useAuth(); // Acesso ao método de login do contexto
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState<string>("");
@@ -38,18 +38,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     }
 
     try {
-      // Permite sobrescrever o submit externo (ex: testes ou página externa)
       if (onSubmit) {
         onSubmit(formData.email, formData.password);
         return;
       }
 
-      await login(formData.email, formData.password); // Usando o método de login do contexto
+      await login(formData.email, formData.password);
 
       alert("Login realizado com sucesso!");
-      router.push("/"); // Redireciona para a página inicial após o login
+      router.push("/");
     } catch (err) {
-      // Garantindo que err é do tipo Error
       if (err instanceof Error) {
         setError(err.message || "Erro ao fazer login.");
       } else {
@@ -126,13 +124,3 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 };
 
 export default LoginForm;
-
-// 01-Estruturas e Tratamento -
-// 02-Funções e Métodos -
-// 03-Arrays -
-// 04-Objetos -
-// 05-Formulários e Eventos -
-// 06-Hooks -
-// 07-Props e Router -
-// 08-Api -
-// 09-Renderização Condicional -

@@ -23,7 +23,7 @@ export const loginUser = async (email: string, password: string) => {
     throw new Error(errorData.message || "Erro ao fazer login.");
   }
 
-  return res.json(); // Retorna os dados do usuário logado
+  return res.json();
 };
 
 export const registerUser = async (name: string, email: string, password: string) => {
@@ -40,5 +40,5 @@ export const registerUser = async (name: string, email: string, password: string
     throw new Error(errorData.message || "Erro ao cadastrar usuário.");
   }
 
-  return res.json(); // Retorna os dados do usuário criado
+  return res.json();
 };

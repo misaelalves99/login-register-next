@@ -7,5 +7,3 @@ export const validateEmail = (email: string): boolean => {
 export const validateRequired = (value: string): boolean => {
   return value.trim() !== '';
 };
-
-// 02-Funções e Métodos -

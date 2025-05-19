@@ -4,7 +4,7 @@
 
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
-import styles from "./RegisterPage.module.css"; // Importando o CSS Module
+import styles from "./RegisterPage.module.css";
 
 const RegisterPage: React.FC = () => {
   return (

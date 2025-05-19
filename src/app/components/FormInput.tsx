@@ -40,6 +40,3 @@ const FormInput: React.FC<FormInputProps> = ({
 };
 
 export default FormInput;
-
-// 05-Formulários e Eventos -
-// 07-Props e Router -

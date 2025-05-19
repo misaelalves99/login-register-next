@@ -7,13 +7,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./context/AuthContext";
 
-// 07-Metadata
 export const metadata: Metadata = {
   title: "Minha Loja",
   description: "Loja online com Next.js, TypeScript e Tailwind CSS",
 };
 
-// 07-Props e Router
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">

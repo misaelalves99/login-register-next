@@ -4,7 +4,7 @@
 
 import React from 'react';
 import RecoverPasswordForm from '../components/RecoverPasswordForm';
-import styles from './RecoverPasswordPage.module.css'; // Importando o CSS Module
+import styles from './RecoverPasswordPage.module.css';
 
 const RecoverPasswordPage: React.FC = () => {
   return (

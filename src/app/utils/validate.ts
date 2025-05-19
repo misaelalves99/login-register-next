@@ -12,5 +12,3 @@ export const validatePassword = (password: string): boolean => {
 export const validateForm = (email: string, password: string): boolean => {
   return validateEmail(email) && validatePassword(password);
 };
-
-// 02-Funções e Métodos -

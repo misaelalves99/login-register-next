@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaGoogle, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
-import styles from "./LoginForm.module.css"; // Usa os mesmos estilos
+import styles from "./LoginForm.module.css";
 import FormInput from "./FormInput";
 
 const RegisterForm = () => {
@@ -85,7 +85,7 @@ const RegisterForm = () => {
         <div className={styles.links}>
           <p className={styles.registerLink}>
             Já tem uma conta?{" "}
-            <a href="/auth" className={styles.link}>
+            <a href="/login" className={styles.link}>
               Entrar
             </a>
           </p>
@@ -109,13 +109,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-
-// 01-Estruturas e Tratamento -
-// 02-Funções e Métodos -
-// 03-Arrays -
-// 04-Objetos -
-// 05-Formulários e Eventos -
-// 06-Hooks -
-// 07-Props e Router -
-// 08-Api -
-// 09-Renderização Condicional -

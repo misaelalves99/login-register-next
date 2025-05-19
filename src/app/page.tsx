@@ -8,7 +8,6 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   const router = useRouter();
 
-  // 05-Formulários e Eventos - Handler de navegação
   const handleNavigate = () => {
     router.push("/login");
   };
